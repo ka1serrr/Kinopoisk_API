@@ -9,7 +9,7 @@ export const routes = {
   mainPage: "/",
   filmsPage: "/films",
   filmPage: "/films/:id",
-  loginPage: "./login",
+  loginPage: "/login",
 };
 
 export const router = createBrowserRouter([

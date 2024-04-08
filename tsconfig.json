@@ -27,6 +27,7 @@
       "@/entities": ["src/entities/index.ts"],
       "@/shared": ["src/shared/index.ts"],
       "@/pages/*": ["src/pages/*"],
+      "@/widgets/*":  ["src/widgets/*"],
       "@/*": ["src/*"],
     },
 
