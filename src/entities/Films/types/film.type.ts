@@ -23,6 +23,7 @@ export type Film<T, Y> = {
   name: string;
   genres: T;
   movieLength: number;
+  seriesLength: number;
   isSeries: boolean;
   ageRating: string;
   alternativeName: string;

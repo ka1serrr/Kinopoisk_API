@@ -1,11 +1,17 @@
 import { routes } from "@/app";
-import { useChangeRoute } from "@/shared";
-import { Films } from "@/widgets/Films";
+import { useChangeRoute, Wrapper } from "@/shared";
+import { Films } from "@/widgets/Films/FilmList";
+import { Filters } from "@/widgets/Films";
 
 const MainPage = () => {
   useChangeRoute(routes.mainPage, routes.filmsPage);
 
-  return <Films />;
+  return (
+    <Wrapper>
+      <Filters />
+      <Films />
+    </Wrapper>
+  );
 };
 
 export default MainPage;

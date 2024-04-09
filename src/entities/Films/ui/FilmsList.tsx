@@ -15,8 +15,10 @@ export const FilmsList = () => {
   }, [searchParams]);
 
   return (
-    <Wrapper>
-      <div className='flex flex-col gap-2.5 md:gap-5'>{films?.docs?.map((film) => <FilmsListItem film={film} />)}</div>
-    </Wrapper>
+    <>
+      <section className='flex flex-col gap-2.5 md:gap-5'>
+        {films?.docs?.map((film) => <FilmsListItem film={film} key={film.id} />)}
+      </section>
+    </>
   );
 };
