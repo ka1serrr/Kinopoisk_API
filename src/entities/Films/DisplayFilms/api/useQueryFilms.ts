@@ -1,13 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { $fetch } from "@/shared";
+import { $fetch, transformDataObject } from "@/shared";
 import { Country, FilmQuery, Genres } from "../types";
-
-const transformDataObject = (genres: { name: string }[]) => {
-  return genres
-    .map((genre) => Object.values(genre))
-    .flat()
-    .join(", ");
-};
 
 export const useQueryFilms = (params: string) => {
   return useQuery({

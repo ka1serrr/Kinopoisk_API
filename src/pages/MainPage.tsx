@@ -9,6 +9,7 @@ const MainPage = () => {
 
   return (
     <Wrapper>
+      <h1 className='text-4xl font-bold mb-3'>Все фильмы</h1>
       <Filters />
       <SearchInput />
       <Films />
