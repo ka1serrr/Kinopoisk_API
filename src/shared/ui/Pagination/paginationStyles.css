@@ -1,0 +1,20 @@
+.pagination {
+  @apply flex justify-center gap-6
+}
+
+.pagination .previous, .pagination .next {
+  @apply font-bold hover:text-amber-500 active:text-amber-600 transition-colors duration-200
+}
+
+.pagination .disabled, .pagination .disabled a {
+  @apply opacity-50 hover:text-inherit active:text-inherit cursor-not-allowed
+}
+
+.pagination__page {
+  @apply font-bold hover:text-amber-500 active:text-amber-600 transition-colors duration-200 rounded p-0.5
+}
+
+
+.selected {
+  @apply bg-amber-300
+}
