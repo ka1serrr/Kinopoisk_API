@@ -15,14 +15,14 @@ export const Pagination: FC<Props> = (props) => {
     <div className='flex items-center justify-center mt-2'>
       <ReactPaginate
         {...props}
-        prevRel={null}
         containerClassName='pagination'
         pageClassName='pagination__page'
         breakLabel='...'
         nextLabel='>'
         onPageChange={({ selected }) => onPageChange(selected + 1)}
-        pageRangeDisplayed={5}
-        pageCount={pageCount || 10}
+        pageRangeDisplayed={2}
+        marginPagesDisplayed={1}
+        pageCount={pageCount as number}
         previousLabel='<'
         renderOnZeroPageCount={null}
       />

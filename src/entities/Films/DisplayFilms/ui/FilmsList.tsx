@@ -2,17 +2,23 @@ import { FilmsListItem, useQueryFilms } from "@/entities";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { transformSearchParams, Wrapper } from "@/shared";
+import { useAppContext } from "@/app";
 
 export const FilmsList = () => {
   const [searchParams] = useSearchParams();
   const params = searchParams.entries();
 
-  const { data: films, refetch } = useQueryFilms(transformSearchParams(params));
+  const { setPageCount } = useAppContext();
+  const { data: films, refetch, isSuccess } = useQueryFilms(transformSearchParams(params));
 
   useEffect(() => {
     refetch();
     console.log(films);
   }, [searchParams]);
+
+  useEffect(() => {
+    setPageCount(films?.pages);
+  }, [isSuccess]);
 
   return (
     <>
