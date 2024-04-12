@@ -1,15 +1,11 @@
 import { useSeriesQuery } from "@/entities";
 import { useParams } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared";
-import { useEffect } from "react";
 
 export const FilmSeriesDesktop = () => {
   const { id } = useParams();
   const { data, fetchNextPage, hasNextPage } = useSeriesQuery(Number(id));
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   const content = data?.pages.map(
     (seasons) =>
       seasons?.docs?.map((season) => (

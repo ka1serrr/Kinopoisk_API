@@ -4,7 +4,7 @@ import { PosterQuery } from "@/entities";
 
 export const usePostersQuery = (id: number) => {
   return useInfiniteQuery({
-    queryKey: ["posters"],
+    queryKey: ["posters", id],
     queryFn: ({ pageParam }) =>
       $fetch.get<PosterQuery>({ path: `image?page=${pageParam}&limit=10&movieId=${id}&type=still&notNullFields=url` }),
     initialPageParam: 1,

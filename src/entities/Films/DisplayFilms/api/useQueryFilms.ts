@@ -6,8 +6,6 @@ export const useQueryFilms = (params: string) => {
   return useQuery({
     queryKey: ["films", params],
     queryFn: () => $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie?${params}` }),
-    retry: 3,
-    refetchOnWindowFocus: false,
     select(data) {
       const newData: FilmQuery<string, string> = {
         limit: data.limit,

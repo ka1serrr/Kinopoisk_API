@@ -1,6 +1,5 @@
 import { useActorsQuery } from "@/entities";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared";
 import { NO_DATA_TEXT } from "@/app";
 
@@ -8,9 +7,6 @@ export const FilmActorsDesktop = () => {
   const { id } = useParams();
 
   const { data, fetchNextPage, hasNextPage } = useActorsQuery(Number(id));
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const content = data?.pages?.map((actors) =>
     actors.docs.map((actor) => (
@@ -25,10 +21,11 @@ export const FilmActorsDesktop = () => {
     )),
   );
 
-  const textIfNoActors = data?.pages[0]?.total === 0;
+  const areActorsUnAvailable = data?.pages[0]?.total === 0;
+
   return (
     <>
-      {textIfNoActors ? (
+      {areActorsUnAvailable ? (
         <h3 className='font-bold text-2xl'>{NO_DATA_TEXT.noData} об актёрах</h3>
       ) : (
         <Accordion type='single' collapsible className='w-1/2'>

@@ -1,4 +1,4 @@
-import { Country, Film, Genres } from "@/entities";
+import { Film, Poster } from "@/entities";
 
 type Person = {
   description: string;
@@ -8,10 +8,10 @@ type Person = {
   photo: string;
 };
 
-type SimilarMovie = {
+export type SimilarMovie = {
   id: number;
   name: string;
-  poster: Pick<Film<any, any>, "poster">;
+  poster: Poster;
   year: number;
   type: "movie" | "serial";
 };

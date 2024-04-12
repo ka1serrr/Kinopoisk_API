@@ -11,6 +11,7 @@ type Votes = {
 };
 
 type Poster = {
+  url: string;
   previewUrl: string;
 };
 
