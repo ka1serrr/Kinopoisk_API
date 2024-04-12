@@ -12,7 +12,5 @@ export const useFilmDataQuery = (id: string) => {
       newData.countries = transformDataObject(data.countries);
       return newData;
     },
-    refetchOnWindowFocus: false,
-    retry: 3,
   });
 };

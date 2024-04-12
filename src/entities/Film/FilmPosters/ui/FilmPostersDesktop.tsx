@@ -28,14 +28,22 @@ export const FilmPostersDesktop = () => {
     );
   });
 
+  const areImagesUnAvalibale = data?.pages[0]?.total === 0;
+
   return (
     <section className='flex flex-col justify-center mt-5'>
-      <h3 className='text-3xl font-bold'>Изображения</h3>
-      <Carousel className='w-full'>
-        <CarouselContent className='h-64'>{content}</CarouselContent>
-        <CarouselPrevious className='left-2 size-11' />
-        <CarouselNext className='right-2 size-11' />
-      </Carousel>
+      {areImagesUnAvalibale ? (
+        <h3 className='text-3xl font-bold text-center'>Нет изображений</h3>
+      ) : (
+        <>
+          <h3 className='text-3xl font-bold'>Изображения</h3>
+          <Carousel className='w-full'>
+            <CarouselContent className='h-64'>{content}</CarouselContent>
+            <CarouselPrevious className='left-2 size-11' />
+            <CarouselNext className='right-2 size-11' />
+          </Carousel>
+        </>
+      )}
     </section>
   );
 };

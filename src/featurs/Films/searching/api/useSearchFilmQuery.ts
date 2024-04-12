@@ -6,9 +6,7 @@ export const useSearchFilmQuery = (filmName: string) => {
   return useQuery({
     queryKey: ["filmName", filmName],
     queryFn: () => $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie/search?query=${filmName}&limit=5` }),
-    retry: 3,
     enabled: !!filmName,
-    refetchOnWindowFocus: false,
     select(data) {
       const newData: FilmQuery<string, string> = {
         limit: data.limit,

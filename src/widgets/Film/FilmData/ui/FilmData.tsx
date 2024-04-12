@@ -1,5 +1,11 @@
 import { isMobile } from "react-device-detect";
-import { FilmActorsDesktop, FilmDataDesktop, FilmPostersDesktop, useFilmDataQuery } from "@/entities";
+import {
+  FilmActorsDesktop,
+  FilmDataDesktop,
+  FilmPostersDesktop,
+  useFilmDataQuery,
+  FilmSeriesDesktop,
+} from "@/entities";
 import { useParams } from "react-router-dom";
 import { Divider, Loader } from "@/shared";
 
@@ -22,6 +28,7 @@ export const FilmData = () => {
               <Divider className='mt-4' />
               <div className='flex justify-center gap-4'>
                 <FilmActorsDesktop />
+                {film?.isSeries && <FilmSeriesDesktop />}
               </div>
             </>
           )}

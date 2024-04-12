@@ -2,6 +2,7 @@ import { useActorsQuery } from "@/entities";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared";
+import { NO_DATA_TEXT } from "@/app";
 
 export const FilmActorsDesktop = () => {
   const { id } = useParams();
@@ -23,23 +24,31 @@ export const FilmActorsDesktop = () => {
       </div>
     )),
   );
+
+  const textIfNoActors = data?.pages[0]?.total === 0;
   return (
-    <Accordion type='single' collapsible className='w-1/2'>
-      <AccordionItem value='item-1'>
-        <AccordionTrigger>
-          <span className='w-full font-bold text-center text-2xl'>Список актёров</span>
-        </AccordionTrigger>
-        <AccordionContent className='px-8'>
-          <div className='flex gap-2.5 flex-wrap'>{content}</div>
-          <div className='flex items-center justify-center mt-3'>
-            {hasNextPage && (
-              <Button variant='ghost' onClick={() => fetchNextPage()}>
-                Загрузить ещё
-              </Button>
-            )}
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <>
+      {textIfNoActors ? (
+        <h3 className='font-bold text-2xl'>{NO_DATA_TEXT.noData} об актёрах</h3>
+      ) : (
+        <Accordion type='single' collapsible className='w-1/2'>
+          <AccordionItem value='item-1'>
+            <AccordionTrigger>
+              <span className='w-full font-bold text-center text-2xl'>Список актёров</span>
+            </AccordionTrigger>
+            <AccordionContent className='px-8'>
+              <div className='flex gap-2.5 flex-wrap'>{content}</div>
+              <div className='flex items-center justify-center mt-3'>
+                {hasNextPage && (
+                  <Button variant='ghost' onClick={() => fetchNextPage()}>
+                    Загрузить ещё
+                  </Button>
+                )}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      )}
+    </>
   );
 };
