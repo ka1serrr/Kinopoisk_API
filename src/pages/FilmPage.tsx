@@ -1,8 +1,12 @@
+import { Wrapper } from "@/shared";
+import { FilmData } from "@/widgets/Film";
 
 const FilmPage = () => {
   return (
-    <div>FilmPage</div>
-  )
-}
+    <Wrapper>
+      <FilmData />
+    </Wrapper>
+  );
+};
 
-export default FilmPage
+export default FilmPage;

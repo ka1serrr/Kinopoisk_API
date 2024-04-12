@@ -21,8 +21,8 @@ export const useSearchFilmQuery = (filmName: string) => {
       for (let film of data.docs) {
         newData.docs.push({
           ...film,
-          genres: transformDataObject(film.genres),
-          countries: transformDataObject(film.countries),
+          genres: transformDataObject(film.genres) || "",
+          countries: transformDataObject(film.countries) || "",
         });
       }
 

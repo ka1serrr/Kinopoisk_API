@@ -17,7 +17,9 @@ export const FilmsList = () => {
   }, [searchParams]);
 
   useEffect(() => {
-    setPageCount(films?.pages);
+    if (isSuccess) {
+      setPageCount(films?.pages);
+    }
   }, [isSuccess]);
 
   return (

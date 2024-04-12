@@ -1,6 +1,9 @@
-export const transformDataObject = (genres: { name: string }[]) => {
-  return genres
-    .map((genre) => Object.values(genre))
-    .flat()
-    .join(", ");
+export const transformDataObject = (genres: { name: string }[] | string) => {
+  return (
+    genres
+      // @ts-ignore
+      .map((genre) => Object.values(genre))
+      .flat()
+      .join(", ")
+  );
 };

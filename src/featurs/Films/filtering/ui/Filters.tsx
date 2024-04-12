@@ -44,7 +44,7 @@ export const AgeFilter = () => {
 // TODO: fetch countries from api
 
 export const CountryFilter = () => {
-  const { value, setValue } = useSetFilter("country");
+  const { value, setValue } = useSetFilter("countries.name");
 
   return (
     <Select value={String(value)} defaultValue={String(value)} onValueChange={(value) => setValue(value)}>

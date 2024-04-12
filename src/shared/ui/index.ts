@@ -3,3 +3,7 @@ export * from "./Select";
 export * from "./Input";
 export * from "./Loader";
 export * from "./Pagination";
+export * from "./Button";
+export * from "./Carousel";
+export * from "./Accordion";
+export * from "./Divider";
