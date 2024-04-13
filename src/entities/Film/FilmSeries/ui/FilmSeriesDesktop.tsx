@@ -29,19 +29,19 @@ export const FilmSeriesDesktop = () => {
   );
 
   return (
-    <Accordion type='single' collapsible className='w-1/2'>
+    <Accordion type='single' collapsible className='w-full md:w-1/2'>
       <AccordionItem value='1'>
         <AccordionTrigger>
           <span className='w-full font-bold text-center text-2xl'>Спискок сезонов</span>
         </AccordionTrigger>
-        <AccordionContent className='px-8'>
+        <AccordionContent className='md:px-8'>
           <Accordion type='single' collapsible>
             {content}
           </Accordion>
           <div className='flex items-center justify-center mt-3'>
             {hasNextPage && (
               <Button variant='ghost' onClick={() => fetchNextPage()} disabled={isFetching}>
-                {isFetching ? <Loader2 /> : "Загрузить ещё"}
+                {isFetching ? <Loader2 className='animate-spin' /> : "Загрузить ещё"}
               </Button>
             )}
           </div>

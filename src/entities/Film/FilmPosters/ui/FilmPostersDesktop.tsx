@@ -11,7 +11,7 @@ export const FilmPostersDesktop = () => {
 
   const content = data?.pages[0]?.docs.map((poster) => {
     return (
-      <CarouselItem className='pl-1 basis-1/2 md:basis-1/3' key={poster.url}>
+      <CarouselItem className='pl-1 basis md:basis-1/3' key={poster.url}>
         <ProgressiveImage src={poster.url} placeholder={poster.previewUrl}>
           {(src, loading) => (
             <img
@@ -30,8 +30,10 @@ export const FilmPostersDesktop = () => {
 
   const areImagesUnAvailable = data?.pages[0]?.total === 0;
 
+  const noImagesForNow = data?.pages[0]?.docs.length === 0;
+
   return (
-    <section className='flex flex-col justify-center mt-5'>
+    <section className='flex flex-col justify-center my-2 md:my-5'>
       {areImagesUnAvailable ? (
         <h3 className='text-3xl font-bold text-center'>Нет изображений</h3>
       ) : (
@@ -39,8 +41,16 @@ export const FilmPostersDesktop = () => {
           <h3 className='text-3xl font-bold text-center'>Изображения</h3>
           <Carousel className='w-full'>
             <CarouselContent className='h-64'>{content}</CarouselContent>
-            <CarouselPrevious className='left-2 size-11' />
-            <CarouselNext className='right-2 size-11' />
+            <CarouselPrevious
+              className={clsx("left-2 size-11", {
+                hidden: noImagesForNow,
+              })}
+            />
+            <CarouselNext
+              className={clsx("right-2 size-11", {
+                hidden: noImagesForNow,
+              })}
+            />
           </Carousel>
         </>
       )}

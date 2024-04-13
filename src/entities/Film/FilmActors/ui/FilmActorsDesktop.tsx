@@ -29,17 +29,17 @@ export const FilmActorsDesktop = () => {
       {areActorsUnAvailable ? (
         <h3 className='font-bold text-2xl'>{NO_DATA_TEXT.noData} об актёрах</h3>
       ) : (
-        <Accordion type='single' collapsible className='w-1/2'>
+        <Accordion type='single' collapsible className='w-full md:w-1/2'>
           <AccordionItem value='item-1'>
             <AccordionTrigger>
               <span className='w-full font-bold text-center text-2xl'>Список актёров</span>
             </AccordionTrigger>
-            <AccordionContent className='px-8'>
-              <div className='flex gap-2.5 flex-wrap'>{content}</div>
+            <AccordionContent className='md:px-8'>
+              <div className='flex justify-center gap-2.5 flex-wrap'>{content}</div>
               <div className='flex items-center justify-center mt-3'>
                 {hasNextPage && (
                   <Button variant='ghost' onClick={() => fetchNextPage()} disabled={isFetching}>
-                    {isFetching ? <Loader2 /> : "Загрузить ещё"}
+                    {isFetching ? <Loader2 className='animate-spin' /> : "Загрузить ещё"}
                   </Button>
                 )}
               </div>
