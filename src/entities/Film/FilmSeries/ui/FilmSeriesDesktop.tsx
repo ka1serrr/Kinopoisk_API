@@ -1,10 +1,11 @@
 import { useSeriesQuery } from "@/entities";
 import { useParams } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared";
+import { Loader2 } from "lucide-react";
 
 export const FilmSeriesDesktop = () => {
   const { id } = useParams();
-  const { data, fetchNextPage, hasNextPage } = useSeriesQuery(Number(id));
+  const { data, fetchNextPage, hasNextPage, isFetching } = useSeriesQuery(Number(id));
 
   const content = data?.pages.map(
     (seasons) =>
@@ -39,8 +40,8 @@ export const FilmSeriesDesktop = () => {
           </Accordion>
           <div className='flex items-center justify-center mt-3'>
             {hasNextPage && (
-              <Button variant='ghost' onClick={() => fetchNextPage()}>
-                Загрузить ещё
+              <Button variant='ghost' onClick={() => fetchNextPage()} disabled={isFetching}>
+                {isFetching ? <Loader2 /> : "Загрузить ещё"}
               </Button>
             )}
           </div>

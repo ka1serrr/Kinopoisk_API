@@ -2,11 +2,12 @@ import { useActorsQuery } from "@/entities";
 import { useParams } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/shared";
 import { NO_DATA_TEXT } from "@/app";
+import { Loader2 } from "lucide-react";
 
 export const FilmActorsDesktop = () => {
   const { id } = useParams();
 
-  const { data, fetchNextPage, hasNextPage } = useActorsQuery(Number(id));
+  const { data, fetchNextPage, hasNextPage, isFetching } = useActorsQuery(Number(id));
 
   const content = data?.pages?.map((actors) =>
     actors.docs.map((actor) => (
@@ -37,8 +38,8 @@ export const FilmActorsDesktop = () => {
               <div className='flex gap-2.5 flex-wrap'>{content}</div>
               <div className='flex items-center justify-center mt-3'>
                 {hasNextPage && (
-                  <Button variant='ghost' onClick={() => fetchNextPage()}>
-                    Загрузить ещё
+                  <Button variant='ghost' onClick={() => fetchNextPage()} disabled={isFetching}>
+                    {isFetching ? <Loader2 /> : "Загрузить ещё"}
                   </Button>
                 )}
               </div>

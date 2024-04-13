@@ -12,6 +12,11 @@ module.exports = {
       },
     },
     extend: {
+      backgroundColor: {
+        "green-positive": "#EDF7EC",
+        "gray-neutral": "#F2F2F2",
+        "red-negative": "#FFEEEE",
+      },
       screens: {
         base: "500px",
       },

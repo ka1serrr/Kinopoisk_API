@@ -6,6 +6,7 @@ import {
   useFilmDataQuery,
   FilmSeriesDesktop,
   SimilarMovies,
+  FilmReviews,
 } from "@/entities";
 import { useParams } from "react-router-dom";
 import { Divider, Loader } from "@/shared";
@@ -33,6 +34,8 @@ export const FilmData = () => {
               </div>
               <Divider className='mt-4' />
               <SimilarMovies similarMovies={film?.similarMovies} />
+              <Divider className='mt-4' />
+              <FilmReviews />
             </>
           )}
         </>

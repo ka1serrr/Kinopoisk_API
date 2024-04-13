@@ -1,11 +1,13 @@
 import { DefaultQuery } from "@/shared";
 
+export type ReviewType = "Позитивный" | "Нейтральный" | "Негативный";
+
 export type Review = {
   id: number;
   title: string;
-  type: "Позитивный" | "Нейтральный" | "Негативный";
+  type: ReviewType;
   author: string;
-  date: Date;
+  date: string;
   review: string;
 };
 

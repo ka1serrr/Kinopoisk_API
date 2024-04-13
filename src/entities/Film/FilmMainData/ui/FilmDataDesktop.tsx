@@ -6,10 +6,6 @@ type Props = {
   film: SingleFilm | undefined;
 };
 export const FilmDataDesktop: FC<Props> = ({ film }) => {
-  useEffect(() => {
-    console.log(film?.persons);
-  }, [film]);
-
   return (
     <>
       <section className='flex justify-between'>
