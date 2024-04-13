@@ -1,6 +1,5 @@
 import { FilmReview, useReviewsQuery } from "@/entities";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import "dayjs/locale/ru.js";
 import { Button } from "@/shared";
 import { Loader2 } from "lucide-react";
@@ -9,10 +8,6 @@ export const FilmReviews = () => {
   const { id } = useParams();
 
   const { data, isFetching, fetchNextPage, hasNextPage } = useReviewsQuery(Number(id));
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const content = data?.pages?.map(
     (reviews) => reviews?.docs.map((review) => <FilmReview key={review.id} review={review} />),

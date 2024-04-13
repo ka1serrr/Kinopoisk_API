@@ -8,7 +8,7 @@ import {
   SimilarMovies,
   useFilmDataQuery,
 } from "@/entities";
-import { Divider, Loader } from "@/shared";
+import { Divider, Loader, NavigateToMainPageButton } from "@/shared";
 
 export const FilmDesktop = () => {
   const { id } = useParams();
@@ -22,6 +22,7 @@ export const FilmDesktop = () => {
         </div>
       ) : (
         <>
+          <NavigateToMainPageButton />
           <FilmDataDesktop film={film} />
           <FilmPostersDesktop />
           <Divider className='mt-4' />

@@ -8,6 +8,7 @@ export const transformSearchParams = (searchParams: IterableIterator<[string, st
       }, "");
 
     if (filteredParams[filteredParams.length - 1] === "&") {
+      localStorage.setItem("params", filteredParams);
       return filteredParams.slice(0, -1);
     }
 

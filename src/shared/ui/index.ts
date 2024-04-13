@@ -7,3 +7,4 @@ export * from "./Button";
 export * from "./Carousel";
 export * from "./Accordion";
 export * from "./Divider";
+export * from "./NavigateToMainPageButton";

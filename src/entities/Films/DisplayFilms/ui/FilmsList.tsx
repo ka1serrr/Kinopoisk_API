@@ -13,7 +13,6 @@ export const FilmsList = () => {
 
   useEffect(() => {
     refetch();
-    console.log(films);
   }, [searchParams]);
 
   useEffect(() => {
