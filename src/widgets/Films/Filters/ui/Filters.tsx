@@ -1,4 +1,4 @@
-import { AgeFilter, CountryFilter, YearFilter } from "@/featurs";
+import { AgeFilter, CountryFilter, LimitFilter, YearFilter } from "@/featurs";
 
 export const Filters = () => {
   return (
@@ -6,7 +6,7 @@ export const Filters = () => {
       <YearFilter />
       <AgeFilter />
       <CountryFilter />
-      <CountryFilter />
+      <LimitFilter />
     </div>
   );
 };

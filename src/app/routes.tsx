@@ -4,12 +4,14 @@ import { createBrowserRouter } from "react-router-dom";
 const MainPage = lazy(() => import("@/pages/MainPage"));
 const FilmPage = lazy(() => import("@/pages/FilmPage"));
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const RandomFilmPage = lazy(() => import("@/pages/RandomFilmPage"));
 
 export const routes = {
   mainPage: "/",
   filmsPage: "/films",
   filmPage: "/films/:id",
   loginPage: "/login",
+  randomFilm: "/random",
 };
 
 export const router = createBrowserRouter([
@@ -28,5 +30,9 @@ export const router = createBrowserRouter([
   {
     path: routes.loginPage,
     element: <LoginPage />,
+  },
+  {
+    path: routes.randomFilm,
+    element: <RandomFilmPage />,
   },
 ]);

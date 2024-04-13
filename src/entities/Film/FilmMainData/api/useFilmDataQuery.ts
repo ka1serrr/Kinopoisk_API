@@ -7,10 +7,9 @@ export const useFilmDataQuery = (id: string) => {
     queryKey: ["film", id],
     queryFn: () => $fetch.get<SingleFilm>({ path: `movie/${id}` }),
     select(data) {
-      let newData = data;
-      newData.genres = transformDataObject(data.genres);
-      newData.countries = transformDataObject(data.countries);
-      return newData;
+      data.genres = transformDataObject(data.genres);
+      data.countries = transformDataObject(data.countries);
+      return data;
     },
   });
 };

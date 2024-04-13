@@ -9,7 +9,7 @@ export const PreviewedFilms: FC<Props> = ({ films }) => {
   return (
     <div className='py-4 rounded'>
       {films.map((film) => (
-        <PreviewedFilm film={film} />
+        <PreviewedFilm key={film.id} film={film} />
       ))}
     </div>
   );

@@ -8,3 +8,4 @@ export * from "./Carousel";
 export * from "./Accordion";
 export * from "./Divider";
 export * from "./NavigateToMainPageButton";
+export * from "./ErrorMessage";

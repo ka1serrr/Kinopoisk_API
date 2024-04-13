@@ -34,7 +34,7 @@ export const PrevResult: FC<Props> = (props) => {
       {searchValue && isActive && (
         <>
           <div
-            className=' bg-white rounded-b-md  absolute z-40 w-full'
+            className='bg-white rounded-b-md  absolute z-40 w-full'
             ref={ref as unknown as LegacyRef<HTMLDivElement>}
           >
             <X

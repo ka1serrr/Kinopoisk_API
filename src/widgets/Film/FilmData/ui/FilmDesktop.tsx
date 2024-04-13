@@ -8,11 +8,15 @@ import {
   SimilarMovies,
   useFilmDataQuery,
 } from "@/entities";
-import { Divider, Loader, NavigateToMainPageButton } from "@/shared";
+import { Divider, ErrorMessage, Loader, NavigateToMainPageButton } from "@/shared";
 
 export const FilmDesktop = () => {
   const { id } = useParams();
-  const { data: film, isLoading } = useFilmDataQuery(id as string);
+  const { data: film, isLoading, isError, error } = useFilmDataQuery(id as string);
+
+  if (isError) {
+    return <ErrorMessage error={error} />;
+  }
 
   return (
     <>

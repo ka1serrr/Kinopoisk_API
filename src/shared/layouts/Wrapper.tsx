@@ -7,5 +7,5 @@ type Props = {
 };
 
 export const Wrapper: FC<Props> = ({ children, className }) => {
-  return <main className={cn("container", { className })}>{children}</main>;
+  return <main className={cn("container", className)}>{children}</main>;
 };

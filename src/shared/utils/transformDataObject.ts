@@ -1,9 +1,9 @@
 export const transformDataObject = (genres: { name: string }[] | string) => {
-  return (
-    genres
-      // @ts-ignore
+  if (typeof genres !== "string") {
+    return genres
       .map((genre) => Object.values(genre))
       .flat()
-      .join(", ")
-  );
+      .join(", ");
+  }
+  return genres;
 };
