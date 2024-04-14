@@ -3,7 +3,8 @@ import { FC } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared";
 import { Link } from "react-router-dom";
 import { routes } from "@/app";
-import { transformSeriesLengthText } from "@/entities";
+import ProgressiveImage from "react-progressive-graceful-image";
+import { clsx } from "clsx";
 
 type Props = {
   film: Film<string, string>;
@@ -15,7 +16,18 @@ export const FilmsListItem: FC<Props> = ({ film }) => {
       <Link to={`${routes.filmsPage}/${film.id}`}>
         <CardHeader className='flex flex-col items-center md:block md:w-[400px] basis-1/3 shrink-0'>
           <CardTitle>{film.name || film?.alternativeName}</CardTitle>
-          <img className='w-[200px] md:w-[250px]' src={film.poster.previewUrl} alt={`Картинка к фильму ${film.name}`} />
+          <ProgressiveImage placeholder={film?.poster?.previewUrl} src={film?.poster?.url}>
+            {(src, loading) => (
+              <img
+                className={clsx("w-[200px] md:w-[250px]", {
+                  "blur-md": loading,
+                })}
+                src={src}
+                alt={`Картинка к фильму ${film.name}`}
+                loading='lazy'
+              />
+            )}
+          </ProgressiveImage>
         </CardHeader>
       </Link>
       <CardContent className='grow shrink'>
@@ -25,7 +37,6 @@ export const FilmsListItem: FC<Props> = ({ film }) => {
         </div>
         <span className='block font-bold'>Год выпуска: {film.year}</span>
         <span className='block'>Страна: {film.countries}</span>
-        <span className='block'>{transformSeriesLengthText(film.isSeries, film.seriesLength, film.movieLength)}</span>
       </CardContent>
     </Card>
   );

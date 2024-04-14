@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+<h1 align="center">Привет! Это тестовое задание на стажировку Авито <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32" alt="hi"/>
+</h1> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Как запустить проект?**
 
-## Available Scripts
+Есть два способа.
 
-In the project directory, you can run:
+1:
 
-### `npm start`
+Написать в консоли
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    CREATE_REACT_APP_TOKEN=ваш токен npm run start
+    
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2: Использовать docker
 
-### `npm test`
+1. Напишите в консоли 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```
+    docker compose up
+    ```
+2. После того, как будет создан контейнер, нажмите Ctrl + C
+3. Пишем в консоли 
 
-### `npm run build`
+    Если у вас MacOs/Linux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ---
+    ```
+    export CREATE_REACT_APP_TOKEN=ваш_токен
+    ``` 
+    ---
+    
+    Если у вас Windows (я пользуюсь маком, поэтому не уверен, но должно работать)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ---
+    ```
+    SET CREATE_REACT_APP_TOKEN=ваш_токен
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+***
 
-### `npm run eject`
+### Что было реализовано?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+В приложении сделаны обе обязательные страницы + страница Логина и Рандомного фильма
+1. [x] Страница со списком всех фильмов
+2. [x] Страница отдельного фильма
+3. [x] Страница c поиском рандомного фильма, которая недоступна без авторизации.
+4. [x] Страница авторизации (подходят любые почта и пароль)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
+На странице со всеми фильмами:
+1. [x] Отображается список фильмов и сериалов
+2. [x] Реализована пагинация
+3. [x] Можно выбрать количество фильмов для показа на странице
+4. [x] Можно отфильтровать выдачу
+5. [x] Реализован поиск по названию фильма (выдаются первые пять подходящих результатов)
+6. [x] Можно перейти на страницу фильма из выдачи
+7. [x] Есть возможность поделиться результатами выдачи
+8. [x] История поиска сохраняется в localStorage
+9. [x] Из истории поиска выводятся предыдущие результаты
+10. [ ] Не был реалиазован поиск как в гугле (не нашёл апи такого у них :( )
+11. [x] Есть debounce в одну секунду
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
+На странице с отдельным фильмом
+1. Отображаются:
+   1. [x] Название фильма сериала
+   2. [x] Описание (если есть). Использовал именно короткое описание, как это выглядит на реальном КП
+   3. [x] Рейтинг
+   4. [x] Список актёров с пагинацией
+   5. [x] Список сезонов и серий тоже с пагинацией
+   6. [x] Отзывы с пагинацией
+   7. [x] Апишка в этом плане какая-то странная, там не было прям постеров, а какая-то их пародия была мало у каких фильмов. По этой причине я использовал скриншоты.
+2. [x] Реализован вывод списка похожих фильмов
+3. [x] Отображается заглушка
+4. [x] Реализована кнопка назад
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
+1. Была реализована авторизация
+2. Реализована страница с поиском рандомного фильма
 
-## Learn More
+---
+### Нефункциональные требования
+1. **Стек**
+    * Использован React 18
+    * UI-lib: shad-cn. Вместе с ним для стилизации использовал tailwindcss. Насколько я понимаю, не было ограничений для способов стилизации, поэтому я использовал то, что мне нравится
+   * Использован CRA (он тоже написан на Webpack, а запретов на CRA не было :), хотя обычно я использую Vite)
+   * Я не использовал никаких state-manager'ов, т. к. он был нужен не так много раз, а тащить огромную библиотеку по типу Redux и RTK не хотелось из-за таких мелочей. Вместо этого использовал хук useContext
+   * Использован FSD
+2. Реализован адаптивный интерфейс. На странице с одним фильмом нужно обновить страницу (использована библиотека react-device-detect)
+3. Роутинг выполнен с React-router
+4. При переходах по ссылкам страница не перезагружается (SPA, без next.js)
+5. Использован TypeScript
+6. Есть Dockerfile и docker-compose
+7. Реализована возможность выполнения трёх попыток повторного запроса, если запрос был неудачным
+8. Запросы, относящиеся к старой странице, прерываются (отменяются/прекращаются)
+9. Юнит-тестов нет :(
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Большое спасибо за внимание!

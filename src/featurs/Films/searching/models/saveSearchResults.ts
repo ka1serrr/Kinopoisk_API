@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 export const useSearchResults = () => {
   const saveSearchResults = useCallback((result: string) => {

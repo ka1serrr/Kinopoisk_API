@@ -1,6 +1,8 @@
 import { FilmDescrDesktop, SingleFilm } from "@/entities";
 import { NO_DATA_TEXT } from "@/app";
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import { clsx } from "clsx";
+import ProgressiveImage from "react-progressive-graceful-image";
 
 type Props = {
   film: SingleFilm | undefined;
@@ -9,7 +11,19 @@ export const FilmDataDesktop: FC<Props> = ({ film }) => {
   return (
     <>
       <section className='flex justify-between'>
-        <img className='block flex-shrink-0 w-[100px] base:w-1/3 md:w-[300px]' src={film?.poster.previewUrl} alt='' />
+        <ProgressiveImage placeholder={film?.poster?.previewUrl} src={String(film?.poster?.url)}>
+          {(src, loading) => (
+            <img
+              className={clsx("block flex-shrink-0 w-[100px] base:w-1/3 md:w-[300px]", {
+                "blur-md": loading,
+              })}
+              src={src}
+              alt={`Картинка к фильму ${film?.name}`}
+              loading='lazy'
+            />
+          )}
+        </ProgressiveImage>
+
         <div className='basis-3/5'>
           <h1 className='text-xl md:text-4xl font-bold mb-4'>{film?.name || film?.alternativeName}</h1>
           <p className='text-sm md:text-xl text-justify'>{film?.shortDescription || NO_DATA_TEXT.noDescr}</p>
