@@ -52,7 +52,7 @@ export const CountryFilter = () => {
   const { value, setValue } = useSetFilter("countries.name");
 
   return (
-    <Select value={String(value)} defaultValue={String(value)} onValueChange={(value) => setValue(value)}>
+    <Select value={String(value)} onValueChange={(value) => setValue(value)}>
       <SelectTrigger>
         <SelectValue placeholder='Все годы' />
       </SelectTrigger>
@@ -79,8 +79,10 @@ export const LimitFilter = () => {
     setSearchParams(searchParams);
   };
 
+  const defaultValue = value !== "null" && value !== undefined && value !== null ? String(value) : "10";
+
   return (
-    <Select value={String(value)} defaultValue={String(value)} onValueChange={(value) => onHandleChange(value)}>
+    <Select value={defaultValue} onValueChange={(value) => onHandleChange(value)}>
       <SelectTrigger>
         <SelectValue placeholder='Все годы' />
       </SelectTrigger>
