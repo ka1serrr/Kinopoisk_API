@@ -1,4 +1,4 @@
-import { Button, LoginProtector, NavigateToMainPageButton, Wrapper } from "@/shared";
+import { Button, ErrorMessage, LoginProtector, NavigateToMainPageButton, Wrapper } from "@/shared";
 import {
   RandomCountryFilter,
   RandomGenreFilter,
@@ -29,7 +29,7 @@ const RandomFilmPage = () => {
 
   const queryString = useMakeQueryToString({ type, rating, netWork, country, year, genre });
 
-  const { refetch, isLoading, data } = useRandomFilmQuery(queryString);
+  const { refetch, isLoading, data, isError, error } = useRandomFilmQuery(queryString);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -40,21 +40,27 @@ const RandomFilmPage = () => {
   return (
     <LoginProtector>
       <Wrapper>
-        <div className='flex justify-between flex-col sm:flex-row mb-2'>
-          <NavigateToMainPageButton />
-          <h1 className='text-4xl font-bold mt-2 md:mt-0 text-center sm:text-left'>Случайный фильм</h1>
-        </div>
-        <section className='flex flex-col gap-3 '>
-          <RandomGenreFilter value={genre} setValue={setGenre} />
-          <RandomCountryFilter value={country} setValue={setCountry} />
-          <RandomTypeFilter value={type} setValue={setType} />
-          <RandomYearFilter value={year} setValue={setYear} />
-          <RandomRatingFilter value={rating} setValue={setRating} />
-          <RandomNetworkFilter value={netWork} setValue={setNetWork} />
-          <Button disabled={isLoading} onClick={() => handleSubmit()}>
-            {isLoading ? <Loader2 className='animate-spin' /> : "Мне повезёт!"}
-          </Button>
-        </section>
+        {isError ? (
+          <ErrorMessage error={error} />
+        ) : (
+          <>
+            <div className='flex justify-between flex-col sm:flex-row mb-2'>
+              <NavigateToMainPageButton />
+              <h1 className='text-4xl font-bold mt-2 md:mt-0 text-center sm:text-left'>Случайный фильм</h1>
+            </div>
+            <section className='flex flex-col gap-3 '>
+              <RandomGenreFilter value={genre} setValue={setGenre} />
+              <RandomCountryFilter value={country} setValue={setCountry} />
+              <RandomTypeFilter value={type} setValue={setType} />
+              <RandomYearFilter value={year} setValue={setYear} />
+              <RandomRatingFilter value={rating} setValue={setRating} />
+              <RandomNetworkFilter value={netWork} setValue={setNetWork} />
+              <Button disabled={isLoading} onClick={() => handleSubmit()}>
+                {isLoading ? <Loader2 className='animate-spin' /> : "Мне повезёт!"}
+              </Button>
+            </section>
+          </>
+        )}
       </Wrapper>
     </LoginProtector>
   );
