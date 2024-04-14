@@ -18,7 +18,6 @@ export const PrevResult: FC<Props> = (props) => {
 
   useEffect(() => {
     let timerId: NodeJS.Timeout;
-    console.log(isLoading);
     if (!isActive) {
       setSearchValue("");
       timerId = setTimeout(() => {
@@ -46,7 +45,7 @@ export const PrevResult: FC<Props> = (props) => {
               {results.map((result) => (
                 <div
                   key={result}
-                  className='p-1 rounded-md w-full hover:bg-gray-400 transition-all text-sm cursor-pointer duration-100'
+                  className='p-1 rounded-md w-full hover:bg-gray-400 transition-all text-sm cursor-pointer duration-100 capitalize'
                   onClick={() => setSearchValue(result)}
                 >
                   {result}
