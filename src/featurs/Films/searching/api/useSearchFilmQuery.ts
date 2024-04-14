@@ -5,7 +5,8 @@ import { Country, FilmQuery, Genres } from "@/entities";
 export const useSearchFilmQuery = (filmName: string) => {
   return useQuery({
     queryKey: ["filmName", filmName],
-    queryFn: () => $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie/search?query=${filmName}&limit=5` }),
+    queryFn: ({ signal }) =>
+      $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie/search?query=${filmName}&limit=5`, signal }),
     enabled: !!filmName,
     select(data) {
       const newData: FilmQuery<string, string> = {

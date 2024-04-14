@@ -5,7 +5,7 @@ import { SingleFilm } from "@/entities";
 export const useFilmDataQuery = (id: string) => {
   return useQuery({
     queryKey: ["film", id],
-    queryFn: () => $fetch.get<SingleFilm>({ path: `movie/${id}` }),
+    queryFn: ({ signal }) => $fetch.get<SingleFilm>({ path: `movie/${id}`, signal }),
     select(data) {
       data.genres = transformDataObject(data.genres);
       data.countries = transformDataObject(data.countries);

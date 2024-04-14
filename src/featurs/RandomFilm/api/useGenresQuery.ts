@@ -5,7 +5,7 @@ import { $fetch } from "@/shared";
 export const useGenresQuery = () => {
   return useQuery({
     queryKey: ["genresQuery", "genres"],
-    queryFn: () =>
-      $fetch.get<DefaultFilter[]>({ path: "movie/possible-values-by-field?field=genres.name", version: "1" }),
+    queryFn: ({ signal }) =>
+      $fetch.get<DefaultFilter[]>({ path: "movie/possible-values-by-field?field=genres.name", version: "1", signal }),
   });
 };

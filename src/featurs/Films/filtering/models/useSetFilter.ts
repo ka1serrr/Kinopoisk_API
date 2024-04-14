@@ -7,7 +7,6 @@ export const useSetFilter = (name: string) => {
   const [value, setValue] = useState<undefined | string | null>(searchParams.get(name));
 
   useEffect(() => {
-    console.log(name);
     if (value && value !== "null") {
       searchParams.set(name, value);
       setSearchParams(searchParams);

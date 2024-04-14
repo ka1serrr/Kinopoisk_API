@@ -5,7 +5,7 @@ import { SingleFilm } from "@/entities";
 export const useRandomFilmQuery = (params: string) => {
   return useQuery({
     queryKey: ["randomFilm", params],
-    queryFn: () => $fetch.get<SingleFilm>({ path: `movie/random${params}` }),
+    queryFn: ({ signal }) => $fetch.get<SingleFilm>({ path: `movie/random${params}`, signal }),
     enabled: false,
   });
 };

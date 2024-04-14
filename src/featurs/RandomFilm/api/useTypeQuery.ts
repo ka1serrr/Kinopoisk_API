@@ -5,6 +5,7 @@ import { DefaultFilter } from "@/featurs";
 export const useTypeQuery = () => {
   return useQuery({
     queryKey: ["genresQuery", "types"],
-    queryFn: () => $fetch.get<DefaultFilter[]>({ path: "movie/possible-values-by-field?field=type", version: "1" }),
+    queryFn: ({ signal }) =>
+      $fetch.get<DefaultFilter[]>({ path: "movie/possible-values-by-field?field=type", version: "1", signal }),
   });
 };

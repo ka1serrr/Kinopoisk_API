@@ -5,7 +5,8 @@ import { ReviewsQuery } from "@/entities";
 export const useReviewsQuery = (id: number) => {
   return useInfiniteQuery({
     queryKey: ["reviews", id],
-    queryFn: ({ pageParam }) => $fetch.get<ReviewsQuery>({ path: `review?page=${pageParam}&limit=10&movieId=${id}` }),
+    queryFn: ({ pageParam, signal }) =>
+      $fetch.get<ReviewsQuery>({ path: `review?page=${pageParam}&limit=10&movieId=${id}`, signal }),
     initialPageParam: 1,
     getNextPageParam: (lastPageParam, allPages) => {
       if (lastPageParam.page < lastPageParam.pages) {

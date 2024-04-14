@@ -5,7 +5,7 @@ import { Country, FilmQuery, Genres } from "../types";
 export const useQueryFilms = (params: string) => {
   return useQuery({
     queryKey: ["films", params],
-    queryFn: () => $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie?${params}` }),
+    queryFn: ({ signal }) => $fetch.get<FilmQuery<Genres[], Country[]>>({ path: `movie?${params}`, signal }),
     select(data) {
       const newData: FilmQuery<string, string> = {
         limit: data.limit,

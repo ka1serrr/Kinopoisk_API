@@ -9,7 +9,7 @@ export const useSearchResults = () => {
       searches.shift();
     }
 
-    if (searches.indexOf(result.trim()) === -1) {
+    if (searches.indexOf(result.trim()) !== -1) {
       return;
     }
 
