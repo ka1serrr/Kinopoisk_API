@@ -14,7 +14,7 @@ export const FilmsListItem: FC<Props> = ({ film }) => {
     <Card className='md:flex' key={film.id}>
       <Link to={`${routes.filmsPage}/${film.id}`}>
         <CardHeader className='flex flex-col items-center md:block md:w-[400px] basis-1/3 shrink-0'>
-          <CardTitle>{film.name}</CardTitle>
+          <CardTitle>{film.name || film?.alternativeName}</CardTitle>
           <img className='w-[200px] md:w-[250px]' src={film.poster.previewUrl} alt={`Картинка к фильму ${film.name}`} />
         </CardHeader>
       </Link>

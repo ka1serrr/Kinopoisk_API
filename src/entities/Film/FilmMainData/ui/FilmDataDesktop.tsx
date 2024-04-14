@@ -11,7 +11,7 @@ export const FilmDataDesktop: FC<Props> = ({ film }) => {
       <section className='flex justify-between'>
         <img className='block flex-shrink-0 w-[100px] base:w-1/3 md:w-[300px]' src={film?.poster.previewUrl} alt='' />
         <div className='basis-3/5'>
-          <h1 className='text-xl md:text-4xl font-bold mb-4'>{film?.name}</h1>
+          <h1 className='text-xl md:text-4xl font-bold mb-4'>{film?.name || film?.alternativeName}</h1>
           <p className='text-sm md:text-xl text-justify'>{film?.shortDescription || NO_DATA_TEXT.noDescr}</p>
 
           <div className='mt-4'>

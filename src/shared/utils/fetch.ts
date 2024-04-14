@@ -3,15 +3,17 @@ import { config } from "@/app";
 type Fetch = {
   path: string;
   method: "GET" | "POST" | "PUT" | "DELETE";
+  version?: "1.4" | "1";
 };
 
-type Query = Pick<Fetch, "path">;
+type Query = Pick<Fetch, "path" | "version">;
 
 class FetchClient {
   private API_URL = config.API_URL;
+  private API_1VERSION = config.API_1VERSION;
 
-  private async $fetch<T>({ path, method }: Fetch) {
-    const url = `${this.API_URL}${path}`;
+  private async $fetch<T>({ path, method, version }: Fetch) {
+    const url = version === "1" ? `${this.API_1VERSION}${path}` : `${this.API_URL}${path}`;
 
     try {
       const response = await fetch(url, {
@@ -31,8 +33,8 @@ class FetchClient {
     }
   }
 
-  async get<T>({ path }: Query) {
-    return this.$fetch<T>({ path, method: "GET" });
+  async get<T>({ path, version }: Query) {
+    return this.$fetch<T>({ path, method: "GET", version });
   }
 }
 
