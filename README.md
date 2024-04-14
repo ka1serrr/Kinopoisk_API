@@ -1,13 +1,11 @@
-<h1 align="center">Привет! Это тестовое задание на стажировку Авито <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32" alt="hi"/>
+<h1 align="center">Привет! Это тестовое задание на стажировку Авито
 </h1> 
 
 ## **Как запустить проект?**
 
 Есть два способа.
 
-1:
-
-Написать в консоли
+1: Написать в консоли
 
     CREATE_REACT_APP_TOKEN=ваш токен npm run start
     
