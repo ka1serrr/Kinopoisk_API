@@ -24,7 +24,7 @@
 
     ---
     ```
-    export CREATE_REACT_APP_TOKEN=ваш_токен
+    export REACT_APP_TOKEN=ваш_токен
     ``` 
     ---
     
@@ -32,7 +32,7 @@
 
     ---
     ```
-    SET CREATE_REACT_APP_TOKEN=ваш_токен
+    SET REACT_APP_TOKEN=ваш_токен
     ```
 
 ***
