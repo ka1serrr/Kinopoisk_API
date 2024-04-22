@@ -7,7 +7,7 @@
 
 1: Написать в консоли
 
-    CREATE_REACT_APP_TOKEN=ваш токен npm run start
+    REACT_APP_TOKEN=ваш токен npm run start
     
 
 2: Использовать docker
